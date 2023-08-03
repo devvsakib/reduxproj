@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
     return (
-        <div className="py-3">
+        <div className="flex justify-between py-3">
             <ul className="flex gap-5">
                 <li className="hover:text-blue-400">
                     <Link to='/'>Products</Link>
@@ -14,6 +14,9 @@ const Header = () => {
                     <Link to='/dashboard'>Dashboard</Link>
                 </li>
             </ul>
+            <button>
+                Cart: 0
+            </button>
         </div>
     )
 }
