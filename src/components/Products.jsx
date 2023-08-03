@@ -5,7 +5,7 @@ import { getProducts } from "../store/productSlice"
 
 const Products = () => {
     const dispatch = useDispatch()
-    const { data: products } = useSelector(state => state.products)
+    const { data: products, status } = useSelector(state => state.products)
 
     useEffect(() => {
         dispatch(getProducts())
@@ -13,6 +13,8 @@ const Products = () => {
 
     const addToCart = product => dispatch(add(product))
 
+    if (status === "loading") return <h1>Loading...</h1>
+    if (status === "error") return <h1>Error</h1>
 
     return (
         <div>
