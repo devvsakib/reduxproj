@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 
 const Header = () => {
+    const cartProd = useSelector(state => state.cart) 
     return (
         <div className="flex justify-between py-3">
             <ul className="flex gap-5">
@@ -15,7 +17,7 @@ const Header = () => {
                 </li>
             </ul>
             <button>
-                Cart: 0
+                Cart: {cartProd.length}
             </button>
         </div>
     )
