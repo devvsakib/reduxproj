@@ -1,14 +1,14 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { add } from "../store/createSlice"
+import { getProducts } from "../store/productSlice"
 
 const Products = () => {
     const dispatch = useDispatch()
-    const [products, setProducts] = useState([])
+    const { data: products } = useSelector(state => state.products)
+
     useEffect(() => {
-        axios.get("https://fakestoreapi.com/products")
-            .then((res) => setProducts(res.data))
+        dispatch(getProducts())
     }, [])
 
     const addToCart = product => dispatch(add(product))
